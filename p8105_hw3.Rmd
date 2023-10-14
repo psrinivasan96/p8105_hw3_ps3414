@@ -162,7 +162,7 @@ spaghetti_plot =
     x = "Year",
     y = "Avg data value",
     color = "State",
-    theme(plot.title = element_text(hjust = 0.5)
+    theme(plot.title = element_text(angle = 60, hjust = 0.3)
     ))
 spaghetti_plot
 ```
@@ -179,12 +179,12 @@ brfss_df |>
     year == 2006 | year == 2010,
     locationabbr == "NY") |> 
   ggplot(aes(x = data_value, fill = response)) +
-  geom_boxplot(aes(fill = response), alpha = .5) +
+  geom_boxplot(aes(fill = response), alpha = .3) +
    
   labs(
     title = "Data Values Across different Locations in NY State",
-    x = "Data Value",
-    fill = "Response") + 
+    x = "Data_Value",
+    fill = "Responses") + 
   facet_grid(. ~ year)
 ```
 
@@ -247,7 +247,7 @@ nhanes_education_table =
        x = "Education Level",
        y = "Age") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(hjust = 0.3))
 
 nhanes_education_table
 ```
@@ -270,10 +270,11 @@ nhanes_total_activity_plot =
     title = "Total Activity by Age Across Education Levels",
     x = "Age",
     y = "Activity") +
-  theme(plot.title = element_text(hjust = 0.5))
+  theme(plot.title = element_text(hjust = 0.3))
 
 nhanes_total_activity_plot
 ```
+
 Description: There is a direct proportional relationship between age and activity. As participants age, their total level of activities decreases with time. Similarly, there is a decrease in activity across all educational levels as well. One thing to note, is that participants in the "less than high school" education category had the highest total activity at 20 years of age and also the lowest activity at 80 years of age. 
 
 ##### Make a three-panel plot that shows the 24-hour activity time courses for each education level and use color to indicate sex. 
@@ -296,4 +297,9 @@ three_panel_plot =
 three_panel_plot
 ```
 
-Observations: The distribution of MIMS is similar among males and females. Overall the "less than high school education" category has the highest mean value of MIMS. Male have a lower value of MIMS than female across all education levels. MIMS values start decreasing steadily after approx 1200min across all education levels and gender. 
+Observations: 
+1. The distribution of MIMS is similar among males and females. 
+2. Overall the "less than high school education" category has the highest mean value of MIMS. 3. Male have a lower value of MIMS than female across all education levels.
+4. MIMS values start decreasing steadily after approx 1200min across all education levels and gender. 
+5. Females in the "less than high school" category have the lowest MIMS between 0-500min, versus males have the highest MIMS value in the same education category between ~500-550min. 
+
