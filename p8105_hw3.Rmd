@@ -283,7 +283,7 @@ Description: There is a direct proportional relationship between age and activit
 three_panel_plot = 
   nhanes_combined |> 
   group_by(education, sex) |>
-  summarise(across(starts_with("min"), ~ mean(.), .names = "mean_{.col}")) |>
+  summarize(across(starts_with("min"), ~ mean(.), .names = "mean_{.col}")) |>
   pivot_longer(cols = starts_with("mean_"), names_to = "time", values_to = "mean_value") |>
   mutate(time = as.numeric(substring(time, 9))) |> 
   ggplot(aes(x = time, y = mean_value, color = sex)) +
